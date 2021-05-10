@@ -56,10 +56,6 @@ public class Boat : MonoBehaviour, ITurnDriven
 
 
     #region Public Methods
-    public void SetRadarGridPosition(Vector2Int position)
-    {
-        _radarGridPosition = position;
-    }
     
     #endregion
 

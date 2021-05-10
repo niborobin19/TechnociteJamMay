@@ -19,17 +19,17 @@ MonoBehaviour:
     m_morseCode: '-'
   - m_translation: North
     m_morseCode: -.-
-  - m_translation: East
-    m_morseCode: .-.
-  - m_translation: South
-    m_morseCode: --.
-  - m_translation: West
-    m_morseCode: .--
   - m_translation: North-East
     m_morseCode: -.-....-.
-  - m_translation: North-West
-    m_morseCode: -.-....--
-  - m_translation: South-West
-    m_morseCode: --.....--
+  - m_translation: East
+    m_morseCode: .-.
   - m_translation: South-East
     m_morseCode: --.....-.
+  - m_translation: South
+    m_morseCode: --.
+  - m_translation: South-West
+    m_morseCode: --.....--
+  - m_translation: West
+    m_morseCode: .--
+  - m_translation: North-West
+    m_morseCode: -.-....--

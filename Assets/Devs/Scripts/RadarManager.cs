@@ -9,6 +9,7 @@ public class RadarManager : MonoBehaviour
 
     private Boat[,] _tabBoat = new Boat[4, 8];
     private float _nextspawnTime;
+    private int _currentDirection;
     [SerializeField] private float _turnTime;
     [SerializeField] private Boat _boatPrefab;
     #endregion
@@ -43,6 +44,11 @@ public class RadarManager : MonoBehaviour
         if (Time.time >= _nextspawnTime)
         {
             _nextspawnTime = Time.time + _turnTime/8;
+            _currentDirection ++;
+            if(_currentDirection == 8)
+            {
+                _currentDirection = 0;
+            }
         }
 
     } 
