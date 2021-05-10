@@ -49,7 +49,11 @@ public class InputsDetector : MonoBehaviour
 
     private void DetectInputs()
     {
-        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            float pressingTime = Time.time - _startHoldingTime;
+            Debug.Log(pressingTime);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _startHoldingTime = Time.fixedTime;
