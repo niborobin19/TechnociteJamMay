@@ -16,6 +16,8 @@ public class InputsDetector : MonoBehaviour
     [SerializeField] float _dashTime;
     private bool _calculate;
     private string _morseCode;
+    [SerializeField] private float _validationTime;
+    private bool _validation;
     #endregion fields
 
 
@@ -52,13 +54,15 @@ public class InputsDetector : MonoBehaviour
         {
             _startHoldingTime = Time.fixedTime;
             _calculate = false;
+            _validation = false;
 
         }
         if (Input.GetKeyUp(KeyCode.Space)){
             _endHoldingTime = Time.fixedTime;
             _calculate = true;
+            _validation = true;
         }
-
+        
         if (_calculate)
         {
             float holdingTime = _endHoldingTime - _startHoldingTime;
@@ -76,12 +80,21 @@ public class InputsDetector : MonoBehaviour
                 _morseCode = "";
             }
             _calculate = false;
-            string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
-            Debug.Log(result + "   " +  _morseCode);
+   
         }
-        
+        string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
+        if ((Time.time > _endHoldingTime + _validationTime)&&(_validation))
+         {
+            OnValidation?.Invoke(result);
+            _validation = false;
+         } 
         
     }
-
     #endregion private methods
+    #region public methods
+
+    public delegate void ValidationHandler(string morse);
+
+    public event ValidationHandler OnValidation;
+    #endregion
 }
