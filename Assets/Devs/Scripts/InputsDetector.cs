@@ -15,6 +15,7 @@ public class InputsDetector : MonoBehaviour
     [SerializeField] float _dotTime;
     [SerializeField] float _dashTime;
     private bool _calculate;
+    private string _morseCode;
     #endregion fields
 
 
@@ -31,6 +32,7 @@ public class InputsDetector : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     private void Update()
@@ -45,6 +47,7 @@ public class InputsDetector : MonoBehaviour
 
     private void DetectInputs()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _startHoldingTime = Time.fixedTime;
@@ -62,18 +65,22 @@ public class InputsDetector : MonoBehaviour
 
             if (holdingTime < _dotTime)
             {
-                Debug.Log("points  " + holdingTime);
+                _morseCode += ".";
             }
             else if (holdingTime > _dotTime && holdingTime < _dashTime)
             {
-                Debug.Log("tiret " + holdingTime);
+                _morseCode += "-";
             }
             else if (holdingTime > _dashTime)
             {
-                Debug.Log("Annulation " + holdingTime);
+                _morseCode = "";
             }
             _calculate = false;
+            string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
+            Debug.Log(result + "   " +  _morseCode);
         }
+        
+        
     }
 
     #endregion private methods
