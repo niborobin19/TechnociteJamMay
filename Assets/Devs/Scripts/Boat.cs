@@ -30,7 +30,8 @@ public class Boat : MonoBehaviour, ITurnDriven
         set
         {
             _radarGridPosition = value;
-            //_transform.position = RadarManager.Instance.GridToWorldPosition(_radarGridPosition);
+            _transform.position = RadarManager.Instance.GridToWorldPosition(_radarGridPosition);
+            Debug.Log(_radarGridPosition);
         }
     }
 
@@ -56,6 +57,16 @@ public class Boat : MonoBehaviour, ITurnDriven
 
 
     #region Public Methods
+
+    public void Damage()
+    {
+        _currentHealth --;
+
+        if(_currentHealth == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     
     #endregion
 
@@ -72,6 +83,11 @@ public class Boat : MonoBehaviour, ITurnDriven
         
     }
 
+    private void OnDestroy() 
+    {
+        RadarManager.Instance.ReleasePosition(_radarGridPosition);
+    }
+
     #endregion
     
     
@@ -86,7 +102,8 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void TryMoveCloser()
     {
-        throw new NotImplementedException();
+        var destination = new Vector2Int(RadarGridPosition.x-1, RadarGridPosition.y);
+        RadarManager.Instance.MoveToward(RadarGridPosition, destination);
     }
     
     #endregion

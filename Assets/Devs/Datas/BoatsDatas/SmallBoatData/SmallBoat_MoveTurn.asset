@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6791539950734d8cf28f41d4f58ab, type: 3}
   m_Name: SmallBoat_MoveTurn
   m_EditorClassIdentifier: 
-  value: 2
+  value: 4

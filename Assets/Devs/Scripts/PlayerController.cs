@@ -115,8 +115,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot(int direction)
     {
-        throw new NotImplementedException();
-        //RadarManager.shootat(int direction)
+        RadarManager.Instance.ShootToward(direction);
     }
 
     private void InputsDetector_OnValidation(string validation)
