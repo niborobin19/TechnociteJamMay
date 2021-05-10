@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class MorseCodeManager : MonoBehaviour
 {
-    #region Public Members
-
-
-    #endregion
-
-
-
     #region Static Members
 
     public static MorseCodeManager Instance;
