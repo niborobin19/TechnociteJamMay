@@ -60,9 +60,9 @@ public class MorseCodeManager : MonoBehaviour
     {
         _morseDictionary = new Dictionary<string, string>();
 
-        for (int i = 0; i < _entries.Length; i++)
+        for (int i = 0; i < _entries.entries.Length; i++)
         {
-            var entry = _entries[i];
+            var entry = _entries.entries[i];
             _morseDictionary.Add(entry.m_morseCode, entry.m_translation);
         }
     }
@@ -73,7 +73,7 @@ public class MorseCodeManager : MonoBehaviour
 
     #region Private and Protected Members
     [SerializeField]
-    private MorseCodeTableStruct[] _entries;
+    private MorseCodeSet _entries;
     private Dictionary<string, string> _morseDictionary;
 
     #endregion

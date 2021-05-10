@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void InitializeInstance()
     {
-        if(Instance == null)
+        if(Instance != null)
         {
             Debug.LogWarning("Another instance of PlayerController already exists.");
         }else
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log($"{validation} : {direction}");
 
-        //Shoot(direction);
+        Shoot(direction);
     }
 
     #endregion

@@ -82,12 +82,14 @@ public class InputsDetector : MonoBehaviour
             _calculate = false;
    
         }
-        string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
         if ((Time.time > _endHoldingTime + _validationTime)&&(_validation))
-         {
+        {
+            string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
             OnValidation?.Invoke(result);
+
+            _morseCode = "";
             _validation = false;
-         } 
+        } 
         
     }
     #endregion private methods

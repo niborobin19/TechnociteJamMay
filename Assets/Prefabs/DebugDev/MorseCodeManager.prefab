@@ -43,24 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8424c9de1462642a0cee2e0a694d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entries:
-  - m_translation: dot
-    m_morseCode: .
-  - m_translation: dash
-    m_morseCode: '-'
-  - m_translation: North
-    m_morseCode: -.-
-  - m_translation: East
-    m_morseCode: .-.
-  - m_translation: South
-    m_morseCode: --.
-  - m_translation: West
-    m_morseCode: .--
-  - m_translation: North-East
-    m_morseCode: -.-....-.
-  - m_translation: North-West
-    m_morseCode: -.-....--
-  - m_translation: South-West
-    m_morseCode: --.....--
-  - m_translation: South-East
-    m_morseCode: --.....-.
+  _entries: {fileID: 11400000, guid: 870d8d856e38333478aaf6bd209c20c2, type: 2}
