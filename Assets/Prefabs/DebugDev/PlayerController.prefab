@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &365512676234312088
+--- !u!1 &8926880091629874627
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11627326855725241}
-  - component: {fileID: 8039211777195963671}
+  - component: {fileID: 4333243441957614534}
+  - component: {fileID: 6742442832620708492}
   m_Layer: 0
-  m_Name: MorseCodeManager
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &11627326855725241
+--- !u!4 &4333243441957614534
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365512676234312088}
+  m_GameObject: {fileID: 8926880091629874627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,36 +31,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8039211777195963671
+--- !u!114 &6742442832620708492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365512676234312088}
+  m_GameObject: {fileID: 8926880091629874627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8424c9de1462642a0cee2e0a694d50, type: 3}
+  m_Script: {fileID: 11500000, guid: d48718436cbe4f641909687eb1d784df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entries:
-  - m_translation: dot
-    m_morseCode: .
-  - m_translation: dash
-    m_morseCode: '-'
-  - m_translation: North
-    m_morseCode: -.-
-  - m_translation: East
-    m_morseCode: .-.
-  - m_translation: South
-    m_morseCode: --.
-  - m_translation: West
-    m_morseCode: .--
-  - m_translation: North-East
-    m_morseCode: -.-....-.
-  - m_translation: North-West
-    m_morseCode: -.-....--
-  - m_translation: South-West
-    m_morseCode: --.....--
-  - m_translation: South-East
-    m_morseCode: --.....-.
+  _input: {fileID: 0}
+  _maxHealth: {fileID: 11400000, guid: 0f763f1080c47ed488b5989628130d78, type: 2}
