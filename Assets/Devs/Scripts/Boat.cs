@@ -8,12 +8,17 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     #endregion
 
+
+
     #region Serialized Members
     [SerializeField]
     private BoatDatas _datas;
 
     #endregion
 
+    #region Statics members
+    public static int Amount;
+    #endregion
 
 
     #region Public Fields
@@ -95,6 +100,7 @@ public class Boat : MonoBehaviour, ITurnDriven
     #region Unity API
     private void Awake() 
     {
+        Amount++;
         Initialize();    
     }
 

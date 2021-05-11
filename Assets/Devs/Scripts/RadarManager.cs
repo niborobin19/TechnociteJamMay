@@ -82,6 +82,13 @@ public class RadarManager : MonoBehaviour
         }
     }
 
+    public void GenerateSpawn(GameObject boat)
+    {
+        if(boat == null)
+        {
+            Instantiate(gameObject);
+        }
+    }
     #endregion
 
 
@@ -91,7 +98,7 @@ public class RadarManager : MonoBehaviour
     {
         _transform = transform;
         _currentDirection = -1;
-        InitializeInstance();
+       /* InitializeInstance();
         SpawnBoat(3, 0);
         SpawnBoat(3, 1);
         SpawnBoat(3, 2);
@@ -99,7 +106,7 @@ public class RadarManager : MonoBehaviour
         SpawnBoat(3, 4);
         SpawnBoat(3, 5);
         SpawnBoat(3, 6);
-        SpawnBoat(3, 7);
+        SpawnBoat(3, 7);*/
     }
 
     private void Update()
