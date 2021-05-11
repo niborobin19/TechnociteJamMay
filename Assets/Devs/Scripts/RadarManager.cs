@@ -108,8 +108,8 @@ public class RadarManager : MonoBehaviour
         _currentDirection = -1;
         InitializeInstance();
 
-    /*    SpawnBoat(3, 0);
-        SpawnBoat(3, 1); 2736c151498fa9806c5738e22910622c1c93a4b6
+      // SpawnBoat(3, 0);
+     //   SpawnBoat(3, 1); 
         SpawnBoat(3, 2);
         SpawnBoat(3, 6);
         /*SpawnBoat(3, 2);
