@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turnTime: 6
-  _radiusPerStep: 0.5
+  _radiusPerStep: 0.03
   _boatPrefab: {fileID: 90882813783922420, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   _scannerTransform: {fileID: 2411523616033880233}
   _scannerSoundClip: {fileID: 8300000, guid: c969c8a8da7f17f40a2a456bb1607342, type: 3}
@@ -158,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464573338437279282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6911353949794816976}

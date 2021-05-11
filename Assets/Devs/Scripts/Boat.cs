@@ -14,6 +14,7 @@ public class Boat : MonoBehaviour, ITurnDriven
     [SerializeField]
     private BoatDatas _datas;
 
+    [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private AudioClip _damageSound;
     [SerializeField, Range(0.0f, 5.0f)] private float _damageSoundVolume = 1.2f;
 
@@ -143,7 +144,7 @@ public class Boat : MonoBehaviour, ITurnDriven
         Debug.Log(_datas.startingHealth);
         _currentHealth = _datas.startingHealth;
         _moveTurnCounter = _datas.moveTurnCount;
-        _sprite = GetComponent<SpriteRenderer>();
+        //_sprite = GetComponent<SpriteRenderer>();
         _sprite.color = _datas.baseColor;
     }
 
@@ -229,7 +230,6 @@ public class Boat : MonoBehaviour, ITurnDriven
     private bool _hasFire;
     private Vector2Int _radarGridPosition;
     private Transform _transform;
-    private SpriteRenderer _sprite;
 
     #endregion
 }

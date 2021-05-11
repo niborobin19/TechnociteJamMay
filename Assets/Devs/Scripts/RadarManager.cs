@@ -143,7 +143,7 @@ public class RadarManager : MonoBehaviour
     {
         if (_tabBoat[distance, direction] == null)
         {
-            Boat tempBoat = Instantiate<Boat>(_boatPrefab);
+            Boat tempBoat = Instantiate<Boat>(_boatPrefab, transform.position, transform.rotation);
             _tabBoat[distance, direction] = tempBoat;
             tempBoat.RadarGridPosition = new Vector2Int(distance, direction);
         }
