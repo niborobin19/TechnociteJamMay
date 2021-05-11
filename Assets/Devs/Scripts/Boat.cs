@@ -3,19 +3,14 @@ using UnityEngine;
 
 public class Boat : MonoBehaviour, ITurnDriven
 {
+    #region Public Members
+    public float m_destroyTime;
+
+    #endregion
 
     #region Serialized Members
     [SerializeField]
-    private IntVariable _moveTurnCount;
-
-    [SerializeField]
-    private IntVariable _maxHealth;
-
-    [SerializeField]
-    private IntVariable _fireRange;
-
-    [SerializeField, Tooltip("The time between 2 torpedo shoots.")]
-    private FloatVariable _fireDelay;
+    private BoatDatas _datas;
 
     #endregion
 
@@ -48,7 +43,7 @@ public class Boat : MonoBehaviour, ITurnDriven
         if(_moveTurnCounter == 0)
         {
             TryMoveCloser();
-            _moveTurnCounter = _moveTurnCount.value;
+            _moveTurnCounter = _datas.moveTurnCount;
         }
     }
 
@@ -64,7 +59,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
         if(_currentHealth == 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, m_destroyTime);
         }
     }
     
@@ -80,7 +75,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void Update() 
     {
-        
+        UpdateShoot();
     }
 
     private void OnDestroy() 
@@ -96,14 +91,53 @@ public class Boat : MonoBehaviour, ITurnDriven
     private void Initialize()
     {
         _transform = transform;
-        _currentHealth = _maxHealth.value;
-        _moveTurnCounter = _moveTurnCount.value;
+        Debug.Log(_datas.startingHealth);
+        _currentHealth = _datas.startingHealth;
+        _moveTurnCounter = _datas.moveTurnCount;
+        _sprite = GetComponent<SpriteRenderer>();
+        _sprite.color = _datas.baseColor;
     }
 
     private void TryMoveCloser()
     {
-        var destination = new Vector2Int(RadarGridPosition.x-1, RadarGridPosition.y);
+        var destination = new Vector2Int(RadarGridPosition.x - _datas.movement.x, RadarGridPosition.y + _datas.movement.y);
         RadarManager.Instance.MoveToward(RadarGridPosition, destination);
+    }
+
+    private void UpdateShoot()
+    {
+        _fireTimer += Time.deltaTime;
+
+        if(_fireTimer > _datas.fireTransitions.y)
+        {
+            var timeToRad = _fireTimer % Math.PI / _datas.flickeringRate;
+            var value = (float)Math.Cos(timeToRad);
+            _sprite.color = _datas.dangerFlickering.Evaluate(value);
+        }else if(_fireTimer > _datas.fireTransitions.x)
+        {
+            var timeToRad = _fireTimer % Math.PI / _datas.flickeringRate;
+            var value = (float)Math.Cos(timeToRad);
+            Debug.Log(value);
+            _sprite.color = _datas.warningFlickering.Evaluate(value);
+        }
+        
+        if(_hasFire && _fireTimer <= _datas.fireTransitions.z)
+        {
+            _sprite.color = _datas.shootColor;
+            
+        }else if(_hasFire && _fireTimer > _datas.fireTransitions.z)
+        {
+            _sprite.color = _datas.baseColor;
+            _hasFire = false;
+        }
+
+        if(_fireTimer >= _datas.fireRate)
+        {
+            PlayerController.Instance.Damage();
+            _hasFire = true;
+            
+            _fireTimer = 0.0f;
+        }
     }
     
     #endregion
@@ -114,8 +148,10 @@ public class Boat : MonoBehaviour, ITurnDriven
     private int _moveTurnCounter;
     private int _currentHealth;
     private float _fireTimer;
+    private bool _hasFire;
     private Vector2Int _radarGridPosition;
     private Transform _transform;
+    private SpriteRenderer _sprite;
 
     #endregion
 }
