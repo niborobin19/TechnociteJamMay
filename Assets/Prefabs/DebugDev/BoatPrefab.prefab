@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_destroyTime: 0
   _datas: {fileID: 11400000, guid: 0af3f2a071d53114086f099c86278d91, type: 2}
-  _explosionSound: {fileID: 8300000, guid: c3b0ffe102811c24794986aab9cdd510, type: 3}
+  _damageSound: {fileID: 8300000, guid: 6829502413689f84c88dea6c1542d29f, type: 3}
+  _explosionSound: {fileID: 8300000, guid: 1d33b1c11bc063f4f877a58c84d2d91b, type: 3}
+  _playerExplosionSound: {fileID: 8300000, guid: c3b0ffe102811c24794986aab9cdd510, type: 3}
   _launchedSound: {fileID: 8300000, guid: 02bfd1abbc590e6439388e12ec7c0243, type: 3}
 --- !u!212 &6337720000304307803
 SpriteRenderer:

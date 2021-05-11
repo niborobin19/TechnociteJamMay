@@ -14,11 +14,17 @@ public class Boat : MonoBehaviour, ITurnDriven
     [SerializeField]
     private BoatDatas _datas;
 
-    [SerializeField]
-    private AudioClip _explosionSound;
+    [SerializeField] private AudioClip _damageSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _damageSoundVolume = 1.2f;
+
+    [SerializeField] private AudioClip _explosionSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _explosionSoundVolume = 3f;
+
+    [SerializeField] private AudioClip _playerExplosionSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _playerExplosionSoundVolume = 2.5f;
     
-    [SerializeField]
-    private AudioClip _launchedSound;
+    [SerializeField] private AudioClip _launchedSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _launchedSoundVolume = 1.2f;
 
     #endregion
 
@@ -68,10 +74,12 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     public void Damage()
     {
+        var damaged = false;
         switch(_attackStep)
         {
             case 0:
             {
+                damaged = true;
                 ResetColor();
                 _currentHealth--;
             }break;
@@ -94,8 +102,11 @@ public class Boat : MonoBehaviour, ITurnDriven
 
         if(_currentHealth == 0)
         {
-            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 1.0f, RadarGridPosition.y);
+            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 3.0f, RadarGridPosition.y);
             Destroy(gameObject, m_destroyTime);
+        }else if(damaged)
+        {
+            SoundManager.Instance.PlayAudioClipSpatialized(_damageSound, 1.0f, RadarGridPosition.y);
         }
     }
     
@@ -195,7 +206,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void PlayExplosionDelayed()
     {
-        SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 5f, RadarGridPosition.y);
+        SoundManager.Instance.PlayAudioClipSpatialized(_playerExplosionSound, 2.5f, RadarGridPosition.y);
     }
 
     private void ResetColor()

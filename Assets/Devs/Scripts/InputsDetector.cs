@@ -20,7 +20,9 @@ public class InputsDetector : MonoBehaviour
     private bool _validation;
 
     [SerializeField] private AudioClip _bipSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _bipSoundVolume = 1f;
     [SerializeField] private AudioClip _tacSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _tacSoundVolume = 1f;
     #endregion fields
 
 
@@ -62,8 +64,8 @@ public class InputsDetector : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    SoundManager.Instance.PlayBip(_bipSound, 1.0f);
-                    SoundManager.Instance.PlayAudioClip(_tacSound, 1.0f);
+                    SoundManager.Instance.PlayBip(_bipSound, _bipSoundVolume);
+                    SoundManager.Instance.PlayAudioClip(_tacSound, _tacSoundVolume);
             
 
                     _startHoldingTime = Time.fixedTime;
@@ -94,8 +96,8 @@ public class InputsDetector : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SoundManager.Instance.PlayBip(_bipSound, 1.0f);
-            SoundManager.Instance.PlayAudioClip(_tacSound, 1.0f);
+            SoundManager.Instance.PlayBip(_bipSound, _bipSoundVolume);
+            SoundManager.Instance.PlayAudioClip(_tacSound, _tacSoundVolume);
 
             _startHoldingTime = Time.fixedTime;
             _calculate = false;

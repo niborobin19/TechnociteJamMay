@@ -22,6 +22,7 @@ public class RadarManager : MonoBehaviour
     [SerializeField] private Boat _boatPrefab;
     [SerializeField] private Transform _scannerTransform;
     [SerializeField] private AudioClip _scannerSoundClip;
+    [SerializeField, Range(0.0f, 5.0f)] private float _scannerSoundVolume = 0.6f;
     #endregion
 
 
@@ -159,7 +160,7 @@ public class RadarManager : MonoBehaviour
             
             if(_currentDirection == 0)
             {
-                SoundManager.Instance.PlayAudioClip(_scannerSoundClip, 0.8f);
+                SoundManager.Instance.PlayAudioClip(_scannerSoundClip, _scannerSoundVolume);
             }
         }
     }
