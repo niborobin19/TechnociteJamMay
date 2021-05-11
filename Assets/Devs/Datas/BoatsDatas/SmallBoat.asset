@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6be30fd06f56f84d8bf0cf0a7715ad0, type: 3}
   m_Name: SmallBoat
   m_EditorClassIdentifier: 
-  startingHealth: 2
+  startingHealth: 1
   moveTurnCount: 1
   movement: {x: 1, y: 0}
   attackRange: 1

@@ -92,9 +92,10 @@ public class RadarManager : MonoBehaviour
         }
     }
 
-    public void QueueSpawn(GameObject Boat)
+    public void QueueSpawn(GameObject boat)
     {
-
+        Debug.Log(Time.time);
+        //Debug.Log(boat);
     }
     #endregion
 
@@ -106,6 +107,9 @@ public class RadarManager : MonoBehaviour
         _transform = transform;
         _currentDirection = -1;
         InitializeInstance();
+
+      // SpawnBoat(3, 0);
+     //   SpawnBoat(3, 1); 
         SpawnBoat(3, 2);
         SpawnBoat(3, 6);
         /*SpawnBoat(3, 2);
