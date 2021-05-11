@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dotTime: {fileID: 11400000, guid: 963aa854b8d252d4b8d498a563349fad, type: 2}
   _dashTime: {fileID: 11400000, guid: 89bc359898427714fb65af60d9c75dcf, type: 2}
-  _validationTime: 2
+  _validationTime: {fileID: 11400000, guid: 667593a2b81a38d4e9cba86a536f65d1, type: 2}
   _bipSound: {fileID: 8300000, guid: 6e388e81f5c75c8418517fe226bc2fc9, type: 3}
+  _bipSoundVolume: 1
   _tacSound: {fileID: 8300000, guid: 06cc571a371efd14e9656f9be2c8c7f8, type: 3}
+  _tacSoundVolume: 1
