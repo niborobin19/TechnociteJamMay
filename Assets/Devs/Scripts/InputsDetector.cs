@@ -12,8 +12,8 @@ public class InputsDetector : MonoBehaviour
     #region fields
     private float _startHoldingTime;
     private float _endHoldingTime;
-    [SerializeField] float _dotTime;
-    [SerializeField] float _dashTime;
+    [SerializeField] FloatVariable _dotTime;
+    [SerializeField] FloatVariable _dashTime;
     private bool _calculate;
     private string _morseCode;
     [SerializeField] private float _validationTime;
@@ -52,8 +52,37 @@ public class InputsDetector : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             float pressingTime = Time.time - _startHoldingTime;
-            Debug.Log(pressingTime);
         }
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    _startHoldingTime = Time.fixedTime;
+                    _calculate = false;
+                    _validation = false;
+                    break;
+                case TouchPhase.Moved:
+                    float pressingTime = Time.time - _startHoldingTime;
+                    Debug.Log(pressingTime);
+                    break;
+                case TouchPhase.Stationary:
+                     pressingTime = Time.time - _startHoldingTime;
+                    Debug.Log(pressingTime);
+                    break;
+                case TouchPhase.Ended:
+                    _endHoldingTime = Time.fixedTime;
+                    _calculate = true;
+                    _validation = true;
+                    break;
+                case TouchPhase.Canceled:
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _startHoldingTime = Time.fixedTime;
@@ -71,15 +100,15 @@ public class InputsDetector : MonoBehaviour
         {
             float holdingTime = _endHoldingTime - _startHoldingTime;
 
-            if (holdingTime < _dotTime)
+            if (holdingTime < _dotTime.value)
             {
                 _morseCode += ".";
             }
-            else if (holdingTime > _dotTime && holdingTime < _dashTime)
+            else if (holdingTime > _dotTime.value && holdingTime < _dashTime.value)
             {
                 _morseCode += "-";
             }
-            else if (holdingTime > _dashTime)
+            else if (holdingTime > _dashTime.value)
             {
                 _morseCode = "";
             }
@@ -90,9 +119,9 @@ public class InputsDetector : MonoBehaviour
         {
             string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
             OnValidation?.Invoke(result);
-
             _morseCode = "";
             _validation = false;
+
         } 
         
     }

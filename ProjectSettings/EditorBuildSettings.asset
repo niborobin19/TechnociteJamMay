@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MathieuScene.unity
+    guid: 8630e7bc41fb9b94eaf0a0430f11ea2a
+  - enabled: 0
+    path: Assets/Scenes/PlayroomRobin.unity
+    guid: 2764b504c44d007499a7341dc599661f
   m_configObjects: {}
