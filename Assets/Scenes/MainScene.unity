@@ -434,6 +434,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2114859037}
     m_Modifications:
     - target: {fileID: 1363908101446851088, guid: e997de00db531134f91af03d093e3f5b, type: 3}
+      propertyPath: _turnTime
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363908101446851088, guid: e997de00db531134f91af03d093e3f5b, type: 3}
       propertyPath: _radiusPerStep
       value: 0.035
       objectReference: {fileID: 0}
@@ -754,6 +758,7 @@ MonoBehaviour:
   - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   boatWaves:
   - {fileID: 11400000, guid: 9a9fac3619425f94ead7d76b22d09cd6, type: 2}
+  - {fileID: 11400000, guid: 99463c377fc86d84eb087258ba5d53bb, type: 2}
   _score: {fileID: 11400000, guid: 34c8a88b0e9fe31458c13b8c6968b378, type: 2}
   _baseScore: 5
 --- !u!1 &1989414139 stripped
