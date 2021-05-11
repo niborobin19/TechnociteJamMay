@@ -21,6 +21,8 @@ public class RadarManager : MonoBehaviour
     [SerializeField] private float _radiusPerStep;
     [SerializeField] private Boat _boatPrefab;
     [SerializeField] private Transform _scannerTransform;
+    [SerializeField] private AudioClip _scannerSoundClip;
+    [SerializeField, Range(0.0f, 5.0f)] private float _scannerSoundVolume = 0.6f;
     #endregion
 
 
@@ -105,9 +107,12 @@ public class RadarManager : MonoBehaviour
         _transform = transform;
         _currentDirection = -1;
         InitializeInstance();
+
     /*    SpawnBoat(3, 0);
-        SpawnBoat(3, 1);
+        SpawnBoat(3, 1); 2736c151498fa9806c5738e22910622c1c93a4b6
         SpawnBoat(3, 2);
+        SpawnBoat(3, 6);
+        /*SpawnBoat(3, 2);
         SpawnBoat(3, 3);
         SpawnBoat(3, 4);
         SpawnBoat(3, 5);
@@ -117,6 +122,7 @@ public class RadarManager : MonoBehaviour
 
     private void Update()
     {
+        UpdateDirection();
         ScannerRotationUpdate();
         TurnUpdate();
     }
@@ -141,7 +147,7 @@ public class RadarManager : MonoBehaviour
     {
         if (_tabBoat[distance, direction] == null)
         {
-            Boat tempBoat = Instantiate<Boat>(_boatPrefab);
+            Boat tempBoat = Instantiate<Boat>(_boatPrefab, transform.position, transform.rotation);
             _tabBoat[distance, direction] = tempBoat;
             tempBoat.RadarGridPosition = new Vector2Int(distance, direction);
         }
@@ -155,7 +161,11 @@ public class RadarManager : MonoBehaviour
             MoveBoat();
 
             _nextTurnTime = Time.time + _turnTime/8f;
-            //_currentDirection = (_currentDirection + 1) % 8;
+            
+            if(_currentDirection == 0)
+            {
+                SoundManager.Instance.PlayAudioClip(_scannerSoundClip, _scannerSoundVolume);
+            }
         }
     }
 
@@ -172,8 +182,14 @@ public class RadarManager : MonoBehaviour
         var ratio = (Time.time % _turnTime) / _turnTime;
         var rotation = Quaternion.Euler(0f, 0f, -360f * ratio);
         
-        _direction = (int)(ratio * 8);
         _scannerTransform.localRotation = rotation;
+    }
+
+    private void UpdateDirection()
+    {
+        var ratio = (Time.time % _turnTime) / _turnTime;
+
+        _direction = (int)(ratio * 8);
     }
 
     #endregion

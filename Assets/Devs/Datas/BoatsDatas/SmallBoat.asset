@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: SmallBoat
   m_EditorClassIdentifier: 
   startingHealth: 1
-  moveTurnCount: 2
+  moveTurnCount: 1
   movement: {x: 1, y: 0}
   attackRange: 1
   fireRate: 10
-  fireTransitions: {x: 1, y: 5, z: 0.5}
+  fireRateRandomness: 0
+  fireTransitions: {x: 5, y: 7.5, z: 0.5}
   baseColor: {r: 0, g: 1, b: 0, a: 1}
   warningFlickering:
     serializedVersion: 2

@@ -14,6 +14,19 @@ public class Boat : MonoBehaviour, ITurnDriven
     [SerializeField]
     private BoatDatas _datas;
 
+    [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private AudioClip _damageSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _damageSoundVolume = 1.2f;
+
+    [SerializeField] private AudioClip _explosionSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _explosionSoundVolume = 3f;
+
+    [SerializeField] private AudioClip _playerExplosionSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _playerExplosionSoundVolume = 2.5f;
+    
+    [SerializeField] private AudioClip _launchedSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _launchedSoundVolume = 1.2f;
+
     #endregion
 
     #region Statics members
@@ -62,10 +75,12 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     public void Damage()
     {
+        var damaged = false;
         switch(_attackStep)
         {
             case 0:
             {
+                damaged = true;
                 ResetColor();
                 _currentHealth--;
             }break;
@@ -88,7 +103,11 @@ public class Boat : MonoBehaviour, ITurnDriven
 
         if(_currentHealth == 0)
         {
+            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 3.0f, RadarGridPosition.y);
             Destroy(gameObject, m_destroyTime);
+        }else if(damaged)
+        {
+            SoundManager.Instance.PlayAudioClipSpatialized(_damageSound, 1.0f, RadarGridPosition.y);
         }
     }
     
@@ -125,7 +144,7 @@ public class Boat : MonoBehaviour, ITurnDriven
         Debug.Log(_datas.startingHealth);
         _currentHealth = _datas.startingHealth;
         _moveTurnCounter = _datas.moveTurnCount;
-        _sprite = GetComponent<SpriteRenderer>();
+        //_sprite = GetComponent<SpriteRenderer>();
         _sprite.color = _datas.baseColor;
     }
 
@@ -177,10 +196,18 @@ public class Boat : MonoBehaviour, ITurnDriven
         if(_fireTimer >= _datas.fireRate)
         {
             PlayerController.Instance.Damage();
+            SoundManager.Instance.PlayAudioClipSpatialized(_launchedSound, 0.8f, RadarGridPosition.y);
+            Invoke("PlayExplosionDelayed", 1.0f);
+
             _hasFire = true;
             
             _fireTimer = UnityEngine.Random.Range(_datas.fireRateRandomness, 0.0f);
         }
+    }
+
+    private void PlayExplosionDelayed()
+    {
+        SoundManager.Instance.PlayAudioClipSpatialized(_playerExplosionSound, 2.5f, RadarGridPosition.y);
     }
 
     private void ResetColor()
@@ -203,7 +230,6 @@ public class Boat : MonoBehaviour, ITurnDriven
     private bool _hasFire;
     private Vector2Int _radarGridPosition;
     private Transform _transform;
-    private SpriteRenderer _sprite;
 
     #endregion
 }
