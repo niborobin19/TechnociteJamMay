@@ -16,7 +16,7 @@ public class InputsDetector : MonoBehaviour
     [SerializeField] FloatVariable _dashTime;
     private bool _calculate;
     private string _morseCode;
-    [SerializeField] private float _validationTime;
+    [SerializeField] private FloatVariable _validationTime;
     private bool _validation;
 
     [SerializeField] private AudioClip _bipSound;
@@ -132,13 +132,13 @@ public class InputsDetector : MonoBehaviour
             OnMorseChange?.Invoke(_morseCode);
         }
 
-        if ((Time.time > _endHoldingTime + _validationTime)&&(_validation))
+        if ((Time.time > _endHoldingTime + _validationTime.value)&&(_validation))
         {
             string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
-            OnValidation?.Invoke(result);
             _morseCode = "";
+            OnMorseChange?.Invoke(_morseCode);
+            OnValidation?.Invoke(result);
             _validation = false;
-
         } 
         
     }

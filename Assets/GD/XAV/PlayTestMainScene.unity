@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.43780002, g: 0.48571044, b: 0.5659875, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,6 +428,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2114859037}
     m_Modifications:
+    - target: {fileID: 1363908101446851088, guid: e997de00db531134f91af03d093e3f5b, type: 3}
+      propertyPath: _turnTime
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363908101446851088, guid: e997de00db531134f91af03d093e3f5b, type: 3}
+      propertyPath: _scannerSoundVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1363908101446851089, guid: e997de00db531134f91af03d093e3f5b, type: 3}
       propertyPath: m_Name
       value: RadarManager
@@ -696,13 +704,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407716859}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: -0.26955566, y: 0.59140843, z: -0.72772783, w: -0.21906197}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 101.8, y: 220.65, z: 0}
 --- !u!1001 &1494389391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -907,8 +915,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280032511
+  m_fontColor: {r: 1, g: 0.11006278, b: 0.11006278, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

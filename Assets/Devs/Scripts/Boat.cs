@@ -105,13 +105,13 @@ public class Boat : MonoBehaviour, ITurnDriven
 
         if(_currentHealth == 0)
         {
-            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 3.0f, RadarGridPosition.y);
+            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, _explosionSoundVolume, RadarGridPosition.y);
             Destroy(gameObject, m_destroyTime);
             GameManager.Instance.AddScore(RadarGridPosition.x);
         }
         else if(damaged)
         {
-            SoundManager.Instance.PlayAudioClipSpatialized(_damageSound, 1.0f, RadarGridPosition.y);
+            SoundManager.Instance.PlayAudioClipSpatialized(_damageSound, _damageSoundVolume, RadarGridPosition.y);
         }
     }
     
@@ -200,7 +200,7 @@ public class Boat : MonoBehaviour, ITurnDriven
         if(_fireTimer >= _datas.fireRate)
         {
             PlayerController.Instance.Damage();
-            SoundManager.Instance.PlayAudioClipSpatialized(_launchedSound, 0.8f, RadarGridPosition.y);
+            SoundManager.Instance.PlayAudioClipSpatialized(_launchedSound, _launchedSoundVolume, RadarGridPosition.y);
             Invoke("PlayExplosionDelayed", 1.0f);
 
             _hasFire = true;
@@ -211,7 +211,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void PlayExplosionDelayed()
     {
-        SoundManager.Instance.PlayAudioClipSpatialized(_playerExplosionSound, 2.5f, RadarGridPosition.y);
+        SoundManager.Instance.PlayAudioClipSpatialized(_playerExplosionSound, _playerExplosionSoundVolume, RadarGridPosition.y);
     }
 
     private void ResetColor()
