@@ -5,14 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region fields
-    [SerializeField] private int _BoatNumber;
-    [SerializeField] private GameObject[] _boatArray;
-    [SerializeField] private GameObject _mediumBoatPrefab;
-    [SerializeField] private GameObject _largeBoatPrefab;
+    [SerializeField] private GameObject[] _boatArrayPrefabs;
     [SerializeField] private BoatWave[] boatWaves;
     private int[] _BoatCountArray;
     private int _currentWave;
     private int _remainToSpawn;
+    private int _maxToSpawn;
+    private int _instancesBoats = 0;
+    private float _timeInstantiate;
+    
 
     #endregion
 
@@ -30,7 +31,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _currentWave = 1;
-        _remainToSpawn = boatWaves[_currentWave].basicEnemyCount + boatWaves[_currentWave].bossEnemyCount + boatWaves[_currentWave].normalEnemyCount;
+        _remainToSpawn = _BoatCountArray[0] + _BoatCountArray[1] + _BoatCountArray[2];
+        _maxToSpawn = _BoatCountArray[0] + _BoatCountArray[1] + _BoatCountArray[2]; 
 
     }
 
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         InitializeInstance();
-        _BoatCountArray = new int[_boatArray.Length];
+        _BoatCountArray = new int[3];
 
         _BoatCountArray[0] = boatWaves[0].basicEnemyCount;
         _BoatCountArray[1] = boatWaves[0].normalEnemyCount;
@@ -62,36 +64,69 @@ public class GameManager : MonoBehaviour
     private void CheckWave()
     {
 
-        if((boatWaves[_currentWave].remainingEnemiesForNextWave)<= Boat.Amount + _remainToSpawn)
-        {
-            
-            StartWave(_currentWave);
+            if (_instancesBoats <=  _maxToSpawn)
+            {
 
-        }
-        else
-        {
-            ContinueWave(_currentWave);
-        }
+                ContinueWave(_currentWave);
+
+            }
+            else if(_currentWave<boatWaves.Length)
+            {
+                _currentWave++;
+                StartWave(_currentWave);
+            }
+        
+
         
     }
 
     private void ContinueWave(int wave)
     {
-        int random = Random.Range(0, _boatArray.Length);
 
-      //  if()
+        int random = Random.Range(0, _boatArrayPrefabs.Length);
         
-       // RadarManager.Instance.QueueSpawn();
+        
+        CheckWaveOver();
+        if (Time.time >= _timeInstantiate)
+        {
+            if (_BoatCountArray[random] >= 0)
+            {
+                   _BoatCountArray[random]--;
+                    _instancesBoats++;
+                    RadarManager.Instance.
+                    QueueSpawn(_boatArrayPrefabs[random]);
+                    _timeInstantiate = Time.time + Random.Range(boatWaves[wave - 1].spawnTimeRange.x, boatWaves[wave - 1].spawnTimeRange.y);
+                    return;
+            }  
+            else 
+            {
+                if(_remainToSpawn !=0)
+                 {
+                    ContinueWave(wave);
+                 }
 
+        }
+
+        }
+
+    }
+
+    private void CheckWaveOver()
+    {
+        _remainToSpawn = _BoatCountArray[0] + _BoatCountArray[1] + _BoatCountArray[2];
     }
 
     private void StartWave(int wave)
     {
-        _BoatCountArray[0] = boatWaves[0].basicEnemyCount;
-        _BoatCountArray[1] = boatWaves[0].normalEnemyCount;
-        _BoatCountArray[2] = boatWaves[0].bossEnemyCount;
+        Debug.Log("Start wave" + _currentWave);
+        _BoatCountArray[0] = boatWaves[wave - 1].basicEnemyCount;
+        _BoatCountArray[1] = boatWaves[wave - 1].normalEnemyCount;
+        _BoatCountArray[2] = boatWaves[wave - 1].bossEnemyCount;
 
-        _remainToSpawn = boatWaves[wave].basicEnemyCount + boatWaves[wave].bossEnemyCount + boatWaves[wave].normalEnemyCount;
+       
+       
+
+
     }
 
 
