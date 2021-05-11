@@ -132,7 +132,7 @@ MonoBehaviour:
   _boatPrefab: {fileID: 90882813783922420, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   _scannerTransform: {fileID: 2411523616033880233}
   _scannerSoundClip: {fileID: 8300000, guid: c969c8a8da7f17f40a2a456bb1607342, type: 3}
-  _scannerSoundVolume: 0.6
+  _scannerSoundVolume: 0.29
 --- !u!1 &5464573338437279282
 GameObject:
   m_ObjectHideFlags: 0
