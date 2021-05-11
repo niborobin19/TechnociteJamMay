@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         InitializeInstance();
         _BoatCountArray = new int[_boatArray.Length];
         _BoatCountArray[0] = boatWaves[0].basicEnemyCount;
-        _BoatCountArray[0] = boatWaves[0].normalEnemyCount;
-        _boatCountArray[0] = boatWaves[0].bossEnemyCount;
+        _BoatCountArray[1] = boatWaves[0].normalEnemyCount;
+        _BoatCountArray[2] = boatWaves[0].bossEnemyCount;
     }
 
     #region privates methods
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         int random = Random.Range(0, _boatArray.Length);
         //if()
         
-        RadarManager.Instance.QueueSpawn();
+        //RadarManager.Instance.QueueSpawn();
     }
 
     private void StartWave(int wave)
