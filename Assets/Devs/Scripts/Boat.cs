@@ -62,7 +62,30 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     public void Damage()
     {
-        _currentHealth --;
+        switch(_attackStep)
+        {
+            case 0:
+            {
+                ResetColor();
+                _currentHealth--;
+            }break;
+
+            case 1:
+            {
+                //score cancel 1
+                Debug.LogWarning($"cancel {_attackStep}");
+                ResetColor();
+                _fireTimer = 0.0f;
+            }break;
+
+            case 2:
+            {
+                //score cancel 2
+                Debug.LogWarning($"cancel {_attackStep}");
+                ResetColor();
+                _fireTimer = 0.0f;
+            }break;
+        }
 
         if(_currentHealth == 0)
         {
@@ -83,8 +106,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void Update() 
     {
-        Amount--;
-        UpdateShoot();
+        TryShoot();
     }
 
     private void OnDestroy() 
@@ -113,6 +135,14 @@ public class Boat : MonoBehaviour, ITurnDriven
         RadarManager.Instance.MoveToward(RadarGridPosition, destination);
     }
 
+    private void TryShoot()
+    {
+        if(RadarGridPosition.x <= _datas.attackRange)
+        {
+            UpdateShoot();
+        }
+    }
+
     private void UpdateShoot()
     {
         _fireTimer += Time.deltaTime;
@@ -122,22 +152,26 @@ public class Boat : MonoBehaviour, ITurnDriven
             var timeToRad = _fireTimer % Math.PI / _datas.flickeringRate;
             var value = (float)Math.Cos(timeToRad);
             _sprite.color = _datas.dangerFlickering.Evaluate(value);
+
+            _attackStep = 2;
         }else if(_fireTimer > _datas.fireTransitions.x)
         {
             var timeToRad = _fireTimer % Math.PI / _datas.flickeringRate;
             var value = (float)Math.Cos(timeToRad);
-            Debug.Log(value);
             _sprite.color = _datas.warningFlickering.Evaluate(value);
+
+            _attackStep = 1;
         }
         
         if(_hasFire && _fireTimer <= _datas.fireTransitions.z)
         {
             _sprite.color = _datas.shootColor;
+
+            _attackStep = 3;
             
         }else if(_hasFire && _fireTimer > _datas.fireTransitions.z)
         {
-            _sprite.color = _datas.baseColor;
-            _hasFire = false;
+            ResetColor();
         }
 
         if(_fireTimer >= _datas.fireRate)
@@ -148,6 +182,14 @@ public class Boat : MonoBehaviour, ITurnDriven
             _fireTimer = 0.0f;
         }
     }
+
+    private void ResetColor()
+    {
+        _sprite.color = _datas.baseColor;
+        _hasFire = false;
+
+        _attackStep = 0;
+    }
     
     #endregion
 
@@ -156,6 +198,7 @@ public class Boat : MonoBehaviour, ITurnDriven
     #region Private Members
     private int _moveTurnCounter;
     private int _currentHealth;
+    private int _attackStep;
     private float _fireTimer;
     private bool _hasFire;
     private Vector2Int _radarGridPosition;

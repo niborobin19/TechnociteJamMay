@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if(Health == 0)
         {
-            Debug.LogError("GAME OVER");
+            //Debug.LogError("GAME OVER");
         }
     }
 
@@ -65,8 +65,7 @@ public class PlayerController : MonoBehaviour
     #region Unity API
     private void Awake() 
     {
-        InitializeInstance();
-        InitializeHealth();
+        Initialize();
     }
 
     private void Start() 
