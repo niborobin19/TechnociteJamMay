@@ -430,7 +430,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1363908101446851088, guid: e997de00db531134f91af03d093e3f5b, type: 3}
       propertyPath: _turnTime
-      value: 9
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1363908101446851089, guid: e997de00db531134f91af03d093e3f5b, type: 3}
       propertyPath: m_Name
