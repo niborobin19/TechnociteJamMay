@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5d1c7e3f4525840944f81f1faa468c, type: 3}
   m_Name: DotTime
   m_EditorClassIdentifier: 
-  value: 0.15
+  value: 0.5
