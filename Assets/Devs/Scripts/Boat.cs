@@ -73,7 +73,6 @@ public class Boat : MonoBehaviour, ITurnDriven
             case 1:
             {
                 //score cancel 1
-                Debug.LogWarning($"cancel {_attackStep}");
                 ResetColor();
                 _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
                 
@@ -82,7 +81,6 @@ public class Boat : MonoBehaviour, ITurnDriven
             case 2:
             {
                 //score cancel 2
-                Debug.LogWarning($"cancel {_attackStep}");
                 ResetColor();
                 _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
             }break;

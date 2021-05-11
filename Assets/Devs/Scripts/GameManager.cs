@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     private void ContinueWave(int wave)
     {
         int random = Random.Range(0, _boatArray.Length);
-        if()
+        //if()
         
         RadarManager.Instance.QueueSpawn();
     }
