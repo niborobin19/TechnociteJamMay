@@ -113,8 +113,9 @@ public class InputsDetector : MonoBehaviour
                 _morseCode = "";
             }
             _calculate = false;
-   
+            OnMorseChange?.Invoke(_morseCode);
         }
+
         if ((Time.time > _endHoldingTime + _validationTime)&&(_validation))
         {
             string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
@@ -131,5 +132,9 @@ public class InputsDetector : MonoBehaviour
     public delegate void ValidationHandler(string morse);
 
     public event ValidationHandler OnValidation;
+
+    public delegate void MorseCodeChangerHandler(string morse);
+
+    public event MorseCodeChangerHandler OnMorseChange;
     #endregion
 }

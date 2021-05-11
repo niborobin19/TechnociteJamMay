@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742b748451b277148be20028d0c28ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingProgress: 0.132
+  _loadingProgress: 0
   _dashTime: {fileID: 11400000, guid: 89bc359898427714fb65af60d9c75dcf, type: 2}
   _loadingImage: {fileID: 53556658}
   _loadingText: {fileID: 1708043383}
@@ -621,7 +621,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1708043384
 CanvasRenderer:
   m_ObjectHideFlags: 0
