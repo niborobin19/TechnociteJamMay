@@ -26,7 +26,9 @@ public class Boat : MonoBehaviour, ITurnDriven
         {
             _radarGridPosition = value;
             _transform.position = RadarManager.Instance.GridToWorldPosition(_radarGridPosition);
-            Debug.Log(_radarGridPosition);
+            var scale = (_radarGridPosition.y >= 4) ? -1f : 1f; 
+            _transform.localScale = new Vector3(scale, 1f, 1f);
+            
         }
     }
 

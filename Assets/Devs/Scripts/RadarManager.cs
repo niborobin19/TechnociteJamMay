@@ -1,24 +1,26 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RadarManager : MonoBehaviour
 {
 
     #region Public Members
     public static RadarManager Instance;
-
     #endregion
 
 
 
     #region fields
 
-    private float _nextspawnTime;
+    private float _nextTurnTime;
     private int _currentDirection;
+    private int _direction;
     private Transform _transform;
     private Boat[,] _tabBoat = new Boat[4,8];
     [SerializeField] private float _turnTime;
     [SerializeField] private float _radiusPerStep;
     [SerializeField] private Boat _boatPrefab;
+    [SerializeField] private Transform _scannerTransform;
     #endregion
 
 
@@ -39,6 +41,8 @@ public class RadarManager : MonoBehaviour
 
     public bool ShootToward(int direction)
     {
+        if(direction < 0) return false;
+
         for (int i = 0; i < _tabBoat.GetLength(0); i++)
         {
             var target = _tabBoat[i, direction];
@@ -62,7 +66,8 @@ public class RadarManager : MonoBehaviour
         if(position.x >= _tabBoat.GetLength(0)) return false;
         if(position.y >= _tabBoat.GetLength(1)) return false;
         if(position.x <= 0) return false;
-        if(position.y <= 0) return false;
+
+        position.y = position.y % 8;
 
         return _tabBoat[position.x, position.y] == null;
     }
@@ -85,13 +90,22 @@ public class RadarManager : MonoBehaviour
     private void Awake() 
     {
         _transform = transform;
+        _currentDirection = -1;
         InitializeInstance();
-        SpawnBoat();
+        SpawnBoat(3, 0);
+        SpawnBoat(3, 1);
+        SpawnBoat(3, 2);
+        SpawnBoat(3, 3);
+        SpawnBoat(3, 4);
+        SpawnBoat(3, 5);
+        SpawnBoat(3, 6);
+        SpawnBoat(3, 7);
     }
 
     private void Update()
     {
-       TurnUpdate();
+        ScannerRotationUpdate();
+        TurnUpdate();
     }
     #endregion
 
@@ -110,25 +124,25 @@ public class RadarManager : MonoBehaviour
         }
     }
 
-    private void SpawnBoat()
+    private void SpawnBoat(int distance, int direction)
     {
-        int index = Random.Range(0, 8);
-        if (_tabBoat[3, index] == null)
+        if (_tabBoat[distance, direction] == null)
         {
             Boat tempBoat = Instantiate<Boat>(_boatPrefab);
-            _tabBoat[3, index] = tempBoat;
-            tempBoat.RadarGridPosition = new Vector2Int(3, index);
+            _tabBoat[distance, direction] = tempBoat;
+            tempBoat.RadarGridPosition = new Vector2Int(distance, direction);
         }
     }
 
     private void TurnUpdate()
     {
-        if (Time.time >= _nextspawnTime)
+        if (_direction != _currentDirection)
         {
+            _currentDirection = _direction;
             MoveBoat();
 
-            _nextspawnTime = Time.time + _turnTime/8;
-            _currentDirection = (_currentDirection + 1) % 8;
+            _nextTurnTime = Time.time + _turnTime/8f;
+            //_currentDirection = (_currentDirection + 1) % 8;
         }
     }
 
@@ -138,6 +152,15 @@ public class RadarManager : MonoBehaviour
         {
             _tabBoat[i, _currentDirection]?.TurnUpdate();
         }
+    }
+
+    private void ScannerRotationUpdate()
+    {
+        var ratio = (Time.time % _turnTime) / _turnTime;
+        var rotation = Quaternion.Euler(0f, 0f, -360f * ratio);
+        
+        _direction = (int)(ratio * 8);
+        _scannerTransform.localRotation = rotation;
     }
 
     #endregion

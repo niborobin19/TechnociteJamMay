@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a319b9a6aa68943af31b107ba25093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dotTime: 0.5
-  _dashTime: 1
+  _dotTime: {fileID: 11400000, guid: 963aa854b8d252d4b8d498a563349fad, type: 2}
+  _dashTime: {fileID: 11400000, guid: 89bc359898427714fb65af60d9c75dcf, type: 2}
   _validationTime: 2
