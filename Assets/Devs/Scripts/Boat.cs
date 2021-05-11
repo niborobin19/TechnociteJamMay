@@ -60,6 +60,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     public void TurnUpdate()
     {
+        if(_currentHealth == 0)return;
         _moveTurnCounter --;
 
         if(_moveTurnCounter == 0)
@@ -153,7 +154,6 @@ public class Boat : MonoBehaviour, ITurnDriven
         Debug.Log(_datas.startingHealth);
         _currentHealth = _datas.startingHealth;
         _moveTurnCounter = _datas.moveTurnCount;
-        //_sprite = GetComponent<SpriteRenderer>();
         _sprite.color = _datas.baseColor;
     }
 
