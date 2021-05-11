@@ -89,6 +89,11 @@ public class RadarManager : MonoBehaviour
             Instantiate(gameObject);
         }
     }
+
+    public void QueueSpawn(GameObject Boat)
+    {
+
+    }
     #endregion
 
 
