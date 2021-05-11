@@ -15,6 +15,8 @@ public class Boat : MonoBehaviour, ITurnDriven
     private BoatDatas _datas;
 
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private GameObject _aliveGraphic;
+    [SerializeField] private GameObject _deadGraphic;
     [SerializeField] private AudioClip _damageSound;
     [SerializeField, Range(0.0f, 5.0f)] private float _damageSoundVolume = 1.2f;
 
@@ -106,6 +108,9 @@ public class Boat : MonoBehaviour, ITurnDriven
         if(_currentHealth == 0)
         {
             SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, _explosionSoundVolume, RadarGridPosition.y);
+
+            _aliveGraphic.SetActive(false);
+            _deadGraphic.SetActive(true);
             Destroy(gameObject, m_destroyTime);
             GameManager.Instance.AddScore(RadarGridPosition.x);
         }
