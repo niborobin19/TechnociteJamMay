@@ -18,6 +18,9 @@ public class InputsDetector : MonoBehaviour
     private string _morseCode;
     [SerializeField] private float _validationTime;
     private bool _validation;
+
+    [SerializeField] private AudioClip _bipSound;
+    [SerializeField] private AudioClip _tacSound;
     #endregion fields
 
 
@@ -59,11 +62,17 @@ public class InputsDetector : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+                    SoundManager.Instance.PlayBip(_bipSound, 1.0f);
+                    SoundManager.Instance.PlayAudioClip(_tacSound, 1.0f);
+            
+
                     _startHoldingTime = Time.fixedTime;
                     _calculate = false;
                     _validation = false;
                     break;
                 case TouchPhase.Moved:
+                    SoundManager.Instance.StopBip();
+
                     float pressingTime = Time.time - _startHoldingTime;
                     Debug.Log(pressingTime);
                     break;
@@ -85,12 +94,17 @@ public class InputsDetector : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            SoundManager.Instance.PlayBip(_bipSound, 1.0f);
+            SoundManager.Instance.PlayAudioClip(_tacSound, 1.0f);
+
             _startHoldingTime = Time.fixedTime;
             _calculate = false;
             _validation = false;
 
         }
         if (Input.GetKeyUp(KeyCode.Space)){
+            SoundManager.Instance.StopBip();
+
             _endHoldingTime = Time.fixedTime;
             _calculate = true;
             _validation = true;

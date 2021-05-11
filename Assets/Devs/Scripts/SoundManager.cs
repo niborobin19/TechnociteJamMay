@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using System.Collections;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -12,6 +14,9 @@ public class SoundManager : MonoBehaviour
     #region Serialized Members
     [SerializeField]
     private AudioSource _monoAudioSource;
+
+    [SerializeField]
+    private AudioSource _bipAudioSource;
 
     [SerializeField]
     private AudioSource[] _spatializedAudioSources;
@@ -33,6 +38,18 @@ public class SoundManager : MonoBehaviour
     {
         _spatializedAudioSources[source].PlayOneShot(clip, volume);
     }
+
+    public void PlayBip(AudioClip clip, float volume)
+    {
+        //_bipAudioSource.pitch = 1f;
+        _bipAudioSource.PlayOneShot(clip, volume);
+    }
+
+    public void StopBip()
+    {
+        _bipAudioSource.Stop();
+    }
+
     #endregion
 
 

@@ -14,6 +14,12 @@ public class Boat : MonoBehaviour, ITurnDriven
     [SerializeField]
     private BoatDatas _datas;
 
+    [SerializeField]
+    private AudioClip _explosionSound;
+    
+    [SerializeField]
+    private AudioClip _launchedSound;
+
     #endregion
 
     #region Statics members
@@ -88,6 +94,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
         if(_currentHealth == 0)
         {
+            SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 1.0f, RadarGridPosition.y);
             Destroy(gameObject, m_destroyTime);
         }
     }
@@ -177,10 +184,18 @@ public class Boat : MonoBehaviour, ITurnDriven
         if(_fireTimer >= _datas.fireRate)
         {
             PlayerController.Instance.Damage();
+            SoundManager.Instance.PlayAudioClipSpatialized(_launchedSound, 0.8f, RadarGridPosition.y);
+            Invoke("PlayExplosionDelayed", 1.0f);
+
             _hasFire = true;
             
             _fireTimer = UnityEngine.Random.Range(_datas.fireRateRandomness, 0.0f);
         }
+    }
+
+    private void PlayExplosionDelayed()
+    {
+        SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, 5f, RadarGridPosition.y);
     }
 
     private void ResetColor()
