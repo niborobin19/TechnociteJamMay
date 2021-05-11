@@ -51,6 +51,7 @@ public class RadarManager : MonoBehaviour
             if(target)
             {
                 target.Damage();
+                
                 return true;
             }
         }
