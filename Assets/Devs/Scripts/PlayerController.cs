@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour
 
 
     #region Public Methods
-    public void Damage(int amount)
+    public void Damage()
     {
-        Health -= amount;
+        Health --;
 
         if(Health == 0)
         {

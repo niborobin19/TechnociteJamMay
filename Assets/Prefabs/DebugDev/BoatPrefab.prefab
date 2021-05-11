@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3785683116057538233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,10 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eb320b058545245b50c17ea4539c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTurnCount: {fileID: 11400000, guid: f30ca055bfb1f4b4098c0a8ddde8ccce, type: 2}
-  _maxHealth: {fileID: 11400000, guid: 47b9f631d289bb943a7eb4479cee4808, type: 2}
-  _fireRange: {fileID: 11400000, guid: 63bdc0e8224e9b64b998265e45c40b33, type: 2}
-  _fireDelay: {fileID: 11400000, guid: 7e609773dee340a4e93659e27a493d86, type: 2}
+  m_destroyTime: 0
+  _datas: {fileID: 11400000, guid: 0af3f2a071d53114086f099c86278d91, type: 2}
 --- !u!212 &6337720000304307803
 SpriteRenderer:
   m_ObjectHideFlags: 0
