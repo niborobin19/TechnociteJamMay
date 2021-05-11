@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private int _maxToSpawn;
     private int _instancesBoats = 0;
     private float _timeInstantiate;
+    [SerializeField] private IntVariable _score;
+    [SerializeField] private int _baseScore;
     
 
     #endregion
@@ -122,14 +124,19 @@ public class GameManager : MonoBehaviour
         _BoatCountArray[0] = boatWaves[wave - 1].basicEnemyCount;
         _BoatCountArray[1] = boatWaves[wave - 1].normalEnemyCount;
         _BoatCountArray[2] = boatWaves[wave - 1].bossEnemyCount;
-
-       
-       
-
-
     }
 
 
+
+    #endregion
+
+    #region utils
+
+    public void AddScore(int coefficient )
+    {
+
+        _score.value += _baseScore * coefficient;
+    }
 
     #endregion
 }

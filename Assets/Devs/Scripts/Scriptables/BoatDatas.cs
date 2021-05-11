@@ -26,6 +26,9 @@ public class BoatDatas : ScriptableObject
     [Tooltip("The times for the transitions (warning, danger, shoot invulnerability time)")]
     public Vector3 fireTransitions;
 
+    [Tooltip("Coefficient qui multiplie le score")]
+    public int Coefficient;
+
     public Color baseColor;
     public Gradient warningFlickering;
     public Gradient dangerFlickering;
