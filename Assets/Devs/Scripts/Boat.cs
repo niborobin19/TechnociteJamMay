@@ -75,7 +75,8 @@ public class Boat : MonoBehaviour, ITurnDriven
                 //score cancel 1
                 Debug.LogWarning($"cancel {_attackStep}");
                 ResetColor();
-                _fireTimer = 0.0f;
+                _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
+                
             }break;
 
             case 2:
@@ -83,7 +84,7 @@ public class Boat : MonoBehaviour, ITurnDriven
                 //score cancel 2
                 Debug.LogWarning($"cancel {_attackStep}");
                 ResetColor();
-                _fireTimer = 0.0f;
+                _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
             }break;
         }
 
@@ -111,6 +112,7 @@ public class Boat : MonoBehaviour, ITurnDriven
 
     private void OnDestroy() 
     {
+        Amount--;
         RadarManager.Instance.ReleasePosition(_radarGridPosition);
     }
 
@@ -179,7 +181,7 @@ public class Boat : MonoBehaviour, ITurnDriven
             PlayerController.Instance.Damage();
             _hasFire = true;
             
-            _fireTimer = 0.0f;
+            _fireTimer = UnityEngine.Random.Range(_datas.fireRateRandomness, 0.0f);
         }
     }
 

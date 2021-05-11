@@ -17,8 +17,11 @@ public class BoatDatas : ScriptableObject
     [Tooltip("The maximum distance at which the boat can shoot.")]
     public int attackRange;
 
-    [Tooltip("The time between 2 torpedo shoots.")]
+    [Tooltip("The time between 2 torpedo shots.")]
     public float fireRate;
+
+    [Tooltip("A random modifier between 2 torpedo shots")]
+    public float fireRateRandomness;
 
     [Tooltip("The times for the transitions (warning, danger, shoot invulnerability time)")]
     public Vector3 fireTransitions;

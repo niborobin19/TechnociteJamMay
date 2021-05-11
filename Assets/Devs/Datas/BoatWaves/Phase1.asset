@@ -10,10 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebb15a2b18c7bfc4499d6f8db523a9cb, type: 3}
-  m_Name: Wave_Test
+  m_Name: Phase1
   m_EditorClassIdentifier: 
-  boatPrefab:
-  - boatPrefab: {fileID: 90882813783922420, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
-    spawnPosition: {x: 3, y: 5}
-  - boatPrefab: {fileID: 90882813783922420, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
-    spawnPosition: {x: 3, y: 7}
+  basicEnemyCount: 6
+  normalEnemyCount: 0
+  bossEnemyCount: 0
+  spawnTimeRange: {x: 3, y: 5}
+  remainingEnemiesForNextWave: 1
+  CanSpawnNorth: 1
+  CanSpawnNorthEast: 0
+  CanSpawnEast: 1
+  CanSpawnSouthEast: 0
+  CanSpawnSouth: 1
+  CanSpawnSouthWest: 0
+  CanSpawnWest: 1
+  CanSpawnNorthWest: 0

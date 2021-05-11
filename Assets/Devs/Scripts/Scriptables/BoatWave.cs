@@ -20,5 +20,21 @@ public class BoatWave : ScriptableObject
     public bool CanSpawnWest;
     public bool CanSpawnNorthWest;
 
+    public bool[] CanSpawn{
+        get{
+            var result = new bool[8];
+            result[0] = CanSpawnNorth;
+            result[1] = CanSpawnNorthEast;
+            result[2] = CanSpawnEast;
+            result[3] = CanSpawnSouthEast;
+            result[4] = CanSpawnSouth;
+            result[5] = CanSpawnSouthWest;
+            result[6] = CanSpawnWest;
+            result[7] = CanSpawnNorthWest;
+
+            return result;
+        }
+    }
+
     #endregion
 }
