@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     #region fields
     [SerializeField] private int _BoatNumber;
+    [SerializeField] private GameObject _smallBoat;
+    [SerializeField] private GameObject _mediumBoat;
+    [SerializeField] private GameObject _largeBoat;
     #endregion
 
     #region Static Members
@@ -43,10 +46,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PhaseOne()
-    {
 
-    }
+    
 
     #endregion
 }
