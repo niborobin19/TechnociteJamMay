@@ -91,13 +91,12 @@ public class GameManager : MonoBehaviour
         CheckWaveOver();
         if (Time.time >= _timeInstantiate)
         {
-            if (_BoatCountArray[random] >= 0)
+            if (_BoatCountArray[random] > 0)
             {
-                   _BoatCountArray[random]--;
-                    _instancesBoats++;
-                    RadarManager.Instance.
-                    QueueSpawn(_boatArrayPrefabs[random]);
-                    _timeInstantiate = Time.time + Random.Range(boatWaves[wave - 1].spawnTimeRange.x, boatWaves[wave - 1].spawnTimeRange.y);
+                 if(!RadarManager.Instance.QueueSpawn(_boatArrayPrefabs[random],boatWaves[_currentWave-1].CanSpawn))return;
+                 _instancesBoats++;
+                _BoatCountArray[random]--;
+                _timeInstantiate = Time.time + Random.Range(boatWaves[wave - 1].spawnTimeRange.x, boatWaves[wave - 1].spawnTimeRange.y);
                     return;
             }  
             else 

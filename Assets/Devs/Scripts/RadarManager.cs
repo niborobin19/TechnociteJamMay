@@ -98,6 +98,7 @@ public class RadarManager : MonoBehaviour
 
     public bool QueueSpawn(GameObject boat, bool[] constraints)
     {
+        Debug.Log(boat);
         if(_bufferedBoat) return false;
 
         _bufferedBoat = boat.GetComponent<Boat>();
@@ -116,8 +117,7 @@ public class RadarManager : MonoBehaviour
         _currentDirection = -1;
         InitializeInstance();
         
-        SpawnBoat(3, 2);
-        SpawnBoat(3, 6);
+      
     }
 
     private void Update()
