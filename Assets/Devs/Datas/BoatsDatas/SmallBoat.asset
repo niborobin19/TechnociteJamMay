@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallBoat
   m_EditorClassIdentifier: 
   startingHealth: 1
-  moveTurnCount: 1
+  moveTurnCount: 2
   movement: {x: 1, y: 0}
   attackRange: 1
   fireRate: 10
