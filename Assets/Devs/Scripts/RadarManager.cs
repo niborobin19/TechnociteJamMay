@@ -16,6 +16,9 @@ public class RadarManager : MonoBehaviour
     private int _currentDirection;
     private int _direction;
     private Transform _transform;
+
+    private Boat _bufferedBoat;
+    private bool[] _spawnConstraints;
     private Boat[,] _tabBoat = new Boat[4,8];
     [SerializeField] private float _turnTime;
     [SerializeField] private float _radiusPerStep;
@@ -93,10 +96,14 @@ public class RadarManager : MonoBehaviour
         }
     }
 
-    public void QueueSpawn(GameObject boat)
+    public bool QueueSpawn(GameObject boat, bool[] constraints)
     {
-        Debug.Log(Time.time);
-        //Debug.Log(boat);
+        if(_bufferedBoat) return false;
+
+        _bufferedBoat = boat.GetComponent<Boat>();
+        _spawnConstraints = constraints;
+
+        return _bufferedBoat;
     }
     #endregion
 
@@ -108,17 +115,9 @@ public class RadarManager : MonoBehaviour
         _transform = transform;
         _currentDirection = -1;
         InitializeInstance();
-
-      // SpawnBoat(3, 0);
-     //   SpawnBoat(3, 1); 
+        
         SpawnBoat(3, 2);
         SpawnBoat(3, 6);
-        /*SpawnBoat(3, 2);
-        SpawnBoat(3, 3);
-        SpawnBoat(3, 4);
-        SpawnBoat(3, 5);
-        SpawnBoat(3, 6);
-        SpawnBoat(3, 7);*/
     }
 
     private void Update()
@@ -160,6 +159,7 @@ public class RadarManager : MonoBehaviour
         {
             _currentDirection = _direction;
             MoveBoat();
+            TrySpawn();
 
             _nextTurnTime = Time.time + _turnTime/8f;
             
@@ -175,6 +175,18 @@ public class RadarManager : MonoBehaviour
         for (int i = 0; i < _tabBoat.GetLength(0); i++)
         {
             _tabBoat[i, _currentDirection]?.TurnUpdate();
+        }
+    }
+
+    private void TrySpawn()
+    {
+        if(!_bufferedBoat) return;
+        if(!_spawnConstraints[_currentDirection]) return;
+
+        if(CanMoveOn(new Vector2Int(3, _currentDirection)))
+        {
+            SpawnBoat(3, _currentDirection);
+            _bufferedBoat = null;
         }
     }
 
