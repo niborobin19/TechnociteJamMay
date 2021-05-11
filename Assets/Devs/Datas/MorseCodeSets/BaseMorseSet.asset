@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries:
   - m_translation: dot
-    m_morseCode: .
+    m_morseCode: ..
   - m_translation: dash
-    m_morseCode: '-'
+    m_morseCode: --
   - m_translation: North
     m_morseCode: -.-
   - m_translation: North-East
