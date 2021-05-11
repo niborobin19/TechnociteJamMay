@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     #region Public Methods
     public void Damage()
     {
-        Health --;
+        Health = Mathf.Clamp(_currentHealth-1, 0, _maxHealth.value);
 
         if(Health == 0)
         {
@@ -117,6 +117,11 @@ public class PlayerController : MonoBehaviour
         RadarManager.Instance.ShootToward(direction);
     }
 
+    private void Repair()
+    {
+        Health = Mathf.Clamp(_currentHealth+1, 0, _maxHealth.value);
+    }
+
     private void InputsDetector_OnValidation(string validation)
     {
         var direction = -1;
@@ -170,9 +175,13 @@ public class PlayerController : MonoBehaviour
                 direction = 7;
             }
             break;
-        }
 
-        Debug.Log($"{validation} : {direction}");
+            case "Repair":
+            {
+                
+            }
+            break;
+        }
 
         Shoot(direction);
     }
