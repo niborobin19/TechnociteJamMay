@@ -6,6 +6,12 @@ ModelImporter:
   - first:
       74: 5434250962242781635
     second: Armature|ArmatureAction|ArmatureAction
+  - first:
+      74: -6953473537969355537
+    second: ActionPush
+  - first:
+      74: -944011950971682048
+    second: Normal
   externalObjects: {}
   materials:
     materialImportMode: 2
