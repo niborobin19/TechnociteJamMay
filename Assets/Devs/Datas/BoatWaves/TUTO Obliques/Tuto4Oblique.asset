@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb15a2b18c7bfc4499d6f8db523a9cb, type: 3}
   m_Name: Tuto4Oblique
   m_EditorClassIdentifier: 
-  basicEnemyCount: 4
+  basicEnemyCount: 6
   normalEnemyCount: 0
   bossEnemyCount: 0
-  spawnTimeRange: {x: 7.5, y: 9.5}
+  spawnTimeRange: {x: 4.5, y: 7.5}
   remainingEnemiesForNextWave: 0
   CanSpawnNorth: 0
   CanSpawnNorthEast: 1

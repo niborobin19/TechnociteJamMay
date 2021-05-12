@@ -274,4 +274,4 @@ MonoBehaviour:
   _launchedSound: {fileID: 8300000, guid: 02bfd1abbc590e6439388e12ec7c0243, type: 3}
   _launchedSoundVolume: 1.2
   _disarmedSound: {fileID: 8300000, guid: 72742c0c3b839bc40af9fd42b0c7256c, type: 3}
-  _disarmedSoundVolume: 1.2
+  _disarmedSoundVolume: 1.5
