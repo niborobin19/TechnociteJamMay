@@ -434,6 +434,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0cbd53e18fb9d94cade322dcaebb087, type: 3}
+--- !u!1 &662939838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 636f1420198586c42a077a6b8de45394, type: 3}
+  m_PrefabInstance: {fileID: 512982597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &662939839
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662939838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a379a22693768a4ebc24430743dbf3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &681389882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1460,6 +1484,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MorseCodeInput
       objectReference: {fileID: 0}
+    - target: {fileID: 3054871662473705930, guid: 4a9d15e50448e6c4984eee95507ba793, type: 3}
+      propertyPath: _animatorBlendTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054871662473705930, guid: 4a9d15e50448e6c4984eee95507ba793, type: 3}
+      propertyPath: _telegraphAnimator
+      value: 
+      objectReference: {fileID: 662939839}
     - target: {fileID: 3054871662473705931, guid: 4a9d15e50448e6c4984eee95507ba793, type: 3}
       propertyPath: m_RootOrder
       value: 3
