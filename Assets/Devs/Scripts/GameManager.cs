@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             {
                 
                 _currentWave++;
-                if (_currentWave <= boatWaves.Length)
+                if ((_currentWave <= boatWaves.Length)&&(Boat.Amount < boatWaves[_currentWave - 1].remainingEnemiesForNextWave )
                  {
                 StartWave(_currentWave);
 
