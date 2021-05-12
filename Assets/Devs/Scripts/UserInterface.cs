@@ -17,9 +17,11 @@ public class UserInterface : MonoBehaviour
 
     public static UserInterface Instance;
 
-    public GameObject _mainMenuPanel;
-    public GameObject _victoryPanel;
-    public GameObject _defeatPanel;
+    public bool m_pauseOnPlay;
+
+    public GameObject m_mainMenuPanel;
+    public GameObject m_victoryPanel;
+    public GameObject m_defeatPanel;
 
     [Range(0, 1)]
     public float _loadingProgress;
@@ -32,7 +34,7 @@ public class UserInterface : MonoBehaviour
     public Transform _transitionImage;
     public Text _loadingText;
     public Text _morseCode;
-    public Text _scoreText;
+    public Text[] _scoreTexts;
     #endregion
 
 
@@ -42,23 +44,29 @@ public class UserInterface : MonoBehaviour
     {
         if(isWon)
         {
-            _victoryPanel.SetActive(true);
+            m_victoryPanel.SetActive(true);
         }else
         {
-            _defeatPanel.SetActive(true);
+            m_defeatPanel.SetActive(true);
         }
         Time.timeScale = 0;
     }
 
     public void StartGameButton_OnClick()
     {
-        _mainMenuPanel.SetActive(false);
+        m_mainMenuPanel.SetActive(false);
+        _startReleasingTime = -_validationTime.value*2;
         Time.timeScale = 1.0f;
     }
 
     public void RestartGameButton_OnClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGameButton_OnClick()
+    {
+        Application.Quit();
     }
     #endregion
 
@@ -69,7 +77,7 @@ public class UserInterface : MonoBehaviour
     private void Awake() 
     {
         Instance = this;
-        Time.timeScale = 0;
+        Time.timeScale = m_pauseOnPlay ? 0.0f : 1.0f;
     }
 
     private void Update()
@@ -82,7 +90,6 @@ public class UserInterface : MonoBehaviour
     {
         _score.value = 0;
         _input.OnMorseChange += InputDetectors_OnMorseChange;
-        _startReleasingTime = -_validationTime.value*2;
 
         var ratio = _dotTime.value / _dashTime.value;
         var angle = ratio * 360.0f;
@@ -187,7 +194,10 @@ public class UserInterface : MonoBehaviour
 
     private void UpdateScore()
     {
-        _scoreText.text = $"{_score.value}";
+        for (int i = 0; i < _scoreTexts.Length; i++)
+        {
+            _scoreTexts[i].text = $"{_score.value}"; 
+        }
     }
 
     private bool NotAnyInput()

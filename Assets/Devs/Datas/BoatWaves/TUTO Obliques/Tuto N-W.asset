@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebb15a2b18c7bfc4499d6f8db523a9cb, type: 3}
-  m_Name: TutoNEWS
+  m_Name: Tuto N-W
   m_EditorClassIdentifier: 
-  basicEnemyCount: 4
+  basicEnemyCount: 1
   normalEnemyCount: 0
   bossEnemyCount: 0
-  spawnTimeRange: {x: 4.5, y: 6.5}
+  spawnTimeRange: {x: 4.5, y: 7.5}
   remainingEnemiesForNextWave: 0
-  CanSpawnNorth: 1
+  CanSpawnNorth: 0
   CanSpawnNorthEast: 0
-  CanSpawnEast: 1
+  CanSpawnEast: 0
   CanSpawnSouthEast: 0
-  CanSpawnSouth: 1
+  CanSpawnSouth: 0
   CanSpawnSouthWest: 0
-  CanSpawnWest: 1
-  CanSpawnNorthWest: 0
+  CanSpawnWest: 0
+  CanSpawnNorthWest: 1

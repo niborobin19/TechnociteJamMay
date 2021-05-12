@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         if(Health == 0)
         {
-            //Debug.LogError("GAME OVER");
+            UserInterface.Instance.ShowEndGameUI(false);
         }
     }
 
