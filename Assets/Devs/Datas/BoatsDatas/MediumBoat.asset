@@ -19,7 +19,7 @@ MonoBehaviour:
   fireRate: 10
   fireRateRandomness: 0
   fireTransitions: {x: 5, y: 7.5, z: 0.5}
-  Coefficient: 0
+  Coefficient: 2
   baseColor: {r: 0, g: 1, b: 0, a: 1}
   warningFlickering:
     serializedVersion: 2
