@@ -266,7 +266,7 @@ MonoBehaviour:
   _aliveGraphic: {fileID: 2763003376083816124}
   _deadGraphic: {fileID: 2729515862749985065}
   _damageSound: {fileID: 8300000, guid: 6829502413689f84c88dea6c1542d29f, type: 3}
-  _damageSoundVolume: 1.2
+  _damageSoundVolume: 2.26
   _explosionSound: {fileID: 8300000, guid: 1d33b1c11bc063f4f877a58c84d2d91b, type: 3}
   _explosionSoundVolume: 3
   _playerExplosionSound: {fileID: 8300000, guid: c3b0ffe102811c24794986aab9cdd510, type: 3}
@@ -274,4 +274,4 @@ MonoBehaviour:
   _launchedSound: {fileID: 8300000, guid: 02bfd1abbc590e6439388e12ec7c0243, type: 3}
   _launchedSoundVolume: 1.2
   _disarmedSound: {fileID: 8300000, guid: 72742c0c3b839bc40af9fd42b0c7256c, type: 3}
-  _disarmedSoundVolume: 1.5
+  _disarmedSoundVolume: 2.25
