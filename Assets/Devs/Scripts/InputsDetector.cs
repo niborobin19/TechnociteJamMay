@@ -76,11 +76,11 @@ public class InputsDetector : MonoBehaviour
                     SoundManager.Instance.StopBip();
 
                     float pressingTime = Time.time - _startHoldingTime;
-                    Debug.Log(pressingTime);
+
                     break;
                 case TouchPhase.Stationary:
                      pressingTime = Time.time - _startHoldingTime;
-                    Debug.Log(pressingTime);
+
                     break;
                 case TouchPhase.Ended:
                     _endHoldingTime = Time.fixedTime;
