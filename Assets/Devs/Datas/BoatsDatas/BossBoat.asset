@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   moveTurnCount: 2
-  movement: {x: 0, y: 4}
+  movement: {x: 0, y: 3}
   attackRange: 3
   fireRate: 10
   fireRateRandomness: 0
