@@ -33,3 +33,5 @@ MonoBehaviour:
     m_morseCode: .--
   - m_translation: North-West
     m_morseCode: -.-....--
+  - m_translation: Repair
+    m_morseCode: -..-
