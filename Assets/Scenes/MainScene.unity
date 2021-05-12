@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1017,7 +1017,14 @@ MonoBehaviour:
   - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   boatWaves:
+  - {fileID: 11400000, guid: 6e139ec53d7229149abf9b2a443867b8, type: 2}
+  - {fileID: 11400000, guid: e2e8e4e5e5f3dc64ebb4d6f0e8e8b614, type: 2}
   - {fileID: 11400000, guid: 9a9fac3619425f94ead7d76b22d09cd6, type: 2}
+  - {fileID: 11400000, guid: 99edfc4c86b1eab46aff5c6a87af62e5, type: 2}
+  - {fileID: 11400000, guid: 8b0412625fe4d694f8ddaa084d005710, type: 2}
+  - {fileID: 11400000, guid: 3f1c2ac53b7367c4a9a1c8ef924c95b4, type: 2}
+  - {fileID: 11400000, guid: 64bcb2a20ef6b8a43b7e107f7a6f6277, type: 2}
+  - {fileID: 11400000, guid: 912334469e2bf194284fa1693281e906, type: 2}
   - {fileID: 11400000, guid: 99463c377fc86d84eb087258ba5d53bb, type: 2}
   _score: {fileID: 11400000, guid: 34c8a88b0e9fe31458c13b8c6968b378, type: 2}
   _baseScore: 5
