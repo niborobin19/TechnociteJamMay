@@ -1217,9 +1217,9 @@ MonoBehaviour:
   - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
   boatWaves:
   - {fileID: 11400000, guid: 6e139ec53d7229149abf9b2a443867b8, type: 2}
-  - {fileID: 11400000, guid: 57c3d9b2321e00b4193508015142baf7, type: 2}
   - {fileID: 11400000, guid: 0dfe32269729afe44bb62f1af5cb3c6b, type: 2}
   - {fileID: 11400000, guid: 6bdbc19985df7f046b6ee563bb9bdc1c, type: 2}
+  - {fileID: 11400000, guid: 57c3d9b2321e00b4193508015142baf7, type: 2}
   - {fileID: 11400000, guid: e2e8e4e5e5f3dc64ebb4d6f0e8e8b614, type: 2}
   - {fileID: 11400000, guid: 9a9fac3619425f94ead7d76b22d09cd6, type: 2}
   - {fileID: 11400000, guid: 99edfc4c86b1eab46aff5c6a87af62e5, type: 2}
