@@ -55,6 +55,7 @@ public class UserInterface : MonoBehaviour
     public void StartGameButton_OnClick()
     {
         m_mainMenuPanel.SetActive(false);
+        _startReleasingTime = -_validationTime.value*2;
         Time.timeScale = 1.0f;
     }
 
@@ -84,7 +85,6 @@ public class UserInterface : MonoBehaviour
     {
         _score.value = 0;
         _input.OnMorseChange += InputDetectors_OnMorseChange;
-        _startReleasingTime = -_validationTime.value*2;
 
         var ratio = _dotTime.value / _dashTime.value;
         var angle = ratio * 360.0f;
