@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boatArrayPrefabs:
   - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
-  - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
-  - {fileID: 3785683116057538233, guid: 28eac1c8a8127ad40860603a96fb22d5, type: 3}
+  - {fileID: 1512300560113800471, guid: cafa3af04ba4ad6429e959adf31123ae, type: 3}
+  - {fileID: 257287537749970372, guid: e44ae6b73eb72a74789b742fce868d61, type: 3}
   boatWaves:
   - {fileID: 11400000, guid: 6e139ec53d7229149abf9b2a443867b8, type: 2}
   - {fileID: 11400000, guid: 57c3d9b2321e00b4193508015142baf7, type: 2}
