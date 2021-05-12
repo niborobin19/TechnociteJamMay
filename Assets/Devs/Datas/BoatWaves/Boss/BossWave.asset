@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb15a2b18c7bfc4499d6f8db523a9cb, type: 3}
   m_Name: BossWave
   m_EditorClassIdentifier: 
-  basicEnemyCount: 0
+  basicEnemyCount: 9
   normalEnemyCount: 0
   bossEnemyCount: 1
-  spawnTimeRange: {x: 0, y: 9.5}
-  remainingEnemiesForNextWave: 1
+  spawnTimeRange: {x: 7.5, y: 9.5}
+  remainingEnemiesForNextWave: 0
   CanSpawnNorth: 1
   CanSpawnNorthEast: 1
   CanSpawnEast: 1
