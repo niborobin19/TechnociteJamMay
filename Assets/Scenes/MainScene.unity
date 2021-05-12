@@ -1666,6 +1666,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1799555561022215679, guid: ead99f1250f1c854380b0716d70ff749, type: 3}
+      propertyPath: boatWaves.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799555561022215679, guid: ead99f1250f1c854380b0716d70ff749, type: 3}
+      propertyPath: boatWaves.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ea597eda62a6214282eb2fd3edeede3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead99f1250f1c854380b0716d70ff749, type: 3}
 --- !u!1 &2490194675909764785
