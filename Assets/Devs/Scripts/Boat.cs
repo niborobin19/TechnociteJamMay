@@ -112,12 +112,14 @@ public class Boat : MonoBehaviour, ITurnDriven
             }break;
         }
 
+         _deadGraphic.SetActive(true);
+         Invoke("HideExplosion", 8.0f/12.0f);
+
         if(_currentHealth == 0)
         {
             SoundManager.Instance.PlayAudioClipSpatialized(_explosionSound, _explosionSoundVolume, RadarGridPosition.y);
 
             _aliveGraphic.SetActive(false);
-            _deadGraphic.SetActive(true);
             GameManager.Instance.AddScore(RadarGridPosition.x + _datas.Coefficient);
 
             Destroy(gameObject, m_destroyTime);
@@ -154,6 +156,11 @@ public class Boat : MonoBehaviour, ITurnDriven
     
     
     #region Utils
+
+    private void HideExplosion()
+    {
+        _deadGraphic.SetActive(false);
+    }
     private void Initialize()
     {
         _transform = transform;
