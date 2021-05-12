@@ -98,7 +98,7 @@ public class RadarManager : MonoBehaviour
 
     public bool QueueSpawn(GameObject boat, bool[] constraints)
     {
-        Debug.Log(boat);
+        Boat.Amount++;
         if(_bufferedBoat) return false;
 
         _bufferedBoat = boat.GetComponent<Boat>();
