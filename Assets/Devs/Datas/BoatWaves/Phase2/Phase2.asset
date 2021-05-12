@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb15a2b18c7bfc4499d6f8db523a9cb, type: 3}
   m_Name: Phase2
   m_EditorClassIdentifier: 
-  basicEnemyCount: 0
-  normalEnemyCount: 4
+  basicEnemyCount: 6
+  normalEnemyCount: 0
   bossEnemyCount: 0
   spawnTimeRange: {x: 0.9375, y: 2.8125}
   remainingEnemiesForNextWave: 0
