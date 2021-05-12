@@ -61,4 +61,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 912334469e2bf194284fa1693281e906, type: 2}
   - {fileID: 11400000, guid: 99463c377fc86d84eb087258ba5d53bb, type: 2}
   _score: {fileID: 11400000, guid: 34c8a88b0e9fe31458c13b8c6968b378, type: 2}
-  _baseScore: 5
+  _baseScore: 25
