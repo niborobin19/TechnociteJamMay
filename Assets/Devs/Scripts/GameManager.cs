@@ -66,13 +66,13 @@ public class GameManager : MonoBehaviour
     private void CheckWave()
     {
 
-            if (_instancesBoats <=  _maxToSpawn)
+            if (_instancesBoats <  _maxToSpawn)
             {
 
                 ContinueWave(_currentWave);
 
             }
-            else if(_currentWave<boatWaves.Length)
+            else 
             {
                 _currentWave++;
                 StartWave(_currentWave);
@@ -89,8 +89,10 @@ public class GameManager : MonoBehaviour
         
         
         CheckWaveOver();
+        Debug.Log(_timeInstantiate + "instantiate");
         if (Time.time >= _timeInstantiate)
         {
+           
             if (_BoatCountArray[random] > 0)
             {
                  if(!RadarManager.Instance.QueueSpawn(_boatArrayPrefabs[random],boatWaves[_currentWave-1].CanSpawn))return;
@@ -123,6 +125,7 @@ public class GameManager : MonoBehaviour
         _BoatCountArray[0] = boatWaves[wave - 1].basicEnemyCount;
         _BoatCountArray[1] = boatWaves[wave - 1].normalEnemyCount;
         _BoatCountArray[2] = boatWaves[wave - 1].bossEnemyCount;
+        _instancesBoats = 0;
     }
 
 
