@@ -29,6 +29,9 @@ public class Boat : MonoBehaviour, ITurnDriven
     [SerializeField] private AudioClip _launchedSound;
     [SerializeField, Range(0.0f, 5.0f)] private float _launchedSoundVolume = 1.2f;
 
+    [SerializeField] private AudioClip _disarmedSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _disarmedSoundVolume = 1.2f;
+
     #endregion
 
     #region Statics members
@@ -91,18 +94,21 @@ public class Boat : MonoBehaviour, ITurnDriven
             case 1:
             {
                 //score cancel 1
-                GameManager.Instance.AddScore(1);
+                GameManager.Instance.AddScore(_datas.Coefficient);
                 ResetColor();
                 _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
+                SoundManager.Instance.PlayAudioClipSpatialized(_disarmedSound, _disarmedSoundVolume, RadarGridPosition.y);
+
                 
             }break;
 
             case 2:
             {
                  //score cancel 2
-                GameManager.Instance.AddScore(1);
+                GameManager.Instance.AddScore(_datas.Coefficient);
                 ResetColor();
                 _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
+                SoundManager.Instance.PlayAudioClipSpatialized(_disarmedSound, _disarmedSoundVolume, RadarGridPosition.y);
             }break;
         }
 

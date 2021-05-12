@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private IntVariable _maxHealth;
 
+    
+    [SerializeField] private AudioClip _repairedSound;
+    [SerializeField, Range(0.0f, 5.0f)] private float _repairedSoundVolume = 1.2f;
+
 
     #endregion
 
@@ -120,6 +124,8 @@ public class PlayerController : MonoBehaviour
     private void Repair()
     {
         Health = Mathf.Clamp(_currentHealth+1, 0, _maxHealth.value);
+        if(!_repairedSound) return;
+        SoundManager.Instance.PlayAudioClip(_repairedSound, _repairedSoundVolume);
     }
 
     private void InputsDetector_OnValidation(string validation)
@@ -178,7 +184,7 @@ public class PlayerController : MonoBehaviour
 
             case "Repair":
             {
-                
+                Repair();
             }
             break;
         }
