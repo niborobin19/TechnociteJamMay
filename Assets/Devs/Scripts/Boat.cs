@@ -134,7 +134,6 @@ public class Boat : MonoBehaviour, ITurnDriven
     #region Unity API
     private void Awake() 
     {
-        Amount++;
         Initialize();    
     }
 
