@@ -17,9 +17,11 @@ public class UserInterface : MonoBehaviour
 
     public static UserInterface Instance;
 
-    public GameObject _mainMenuPanel;
-    public GameObject _victoryPanel;
-    public GameObject _defeatPanel;
+    public bool m_pauseOnPlay;
+
+    public GameObject m_mainMenuPanel;
+    public GameObject m_victoryPanel;
+    public GameObject m_defeatPanel;
 
     [Range(0, 1)]
     public float _loadingProgress;
@@ -42,17 +44,17 @@ public class UserInterface : MonoBehaviour
     {
         if(isWon)
         {
-            _victoryPanel.SetActive(true);
+            m_victoryPanel.SetActive(true);
         }else
         {
-            _defeatPanel.SetActive(true);
+            m_defeatPanel.SetActive(true);
         }
         Time.timeScale = 0;
     }
 
     public void StartGameButton_OnClick()
     {
-        _mainMenuPanel.SetActive(false);
+        m_mainMenuPanel.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
@@ -69,7 +71,7 @@ public class UserInterface : MonoBehaviour
     private void Awake() 
     {
         Instance = this;
-        Time.timeScale = 0;
+        Time.timeScale = m_pauseOnPlay ? 0.0f : 1.0f;
     }
 
     private void Update()
