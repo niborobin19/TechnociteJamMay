@@ -74,8 +74,13 @@ public class GameManager : MonoBehaviour
             }
             else 
             {
+                
                 _currentWave++;
+                if (_currentWave <= boatWaves.Length)
+                 {
                 StartWave(_currentWave);
+
+                   }   
             }
         
 
@@ -89,7 +94,6 @@ public class GameManager : MonoBehaviour
         
         
         CheckWaveOver();
-        Debug.Log(_timeInstantiate + "instantiate");
         if (Time.time >= _timeInstantiate)
         {
            
