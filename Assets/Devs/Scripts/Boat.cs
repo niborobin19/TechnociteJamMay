@@ -105,7 +105,7 @@ public class Boat : MonoBehaviour, ITurnDriven
             case 2:
             {
                  //score cancel 2
-                GameManager.Instance.AddScore(_datas.Coefficient);
+                GameManager.Instance.AddScore(_datas.Coefficient + 1);
                 ResetColor();
                 _fireTimer = UnityEngine.Random.Range(-_datas.fireRateRandomness, 0.0f);
                 SoundManager.Instance.PlayAudioClipSpatialized(_disarmedSound, _disarmedSoundVolume, RadarGridPosition.y);
@@ -118,8 +118,9 @@ public class Boat : MonoBehaviour, ITurnDriven
 
             _aliveGraphic.SetActive(false);
             _deadGraphic.SetActive(true);
+            GameManager.Instance.AddScore(RadarGridPosition.x + _datas.Coefficient);
+
             Destroy(gameObject, m_destroyTime);
-            GameManager.Instance.AddScore(RadarGridPosition.x);
         }
         else if(damaged)
         {

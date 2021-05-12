@@ -19,10 +19,20 @@ public class InputsDetector : MonoBehaviour
     [SerializeField] private FloatVariable _validationTime;
     private bool _validation;
 
+    [Header("References")]
+    
+    [SerializeField] private Animator _telegraphAnimator;
+    [SerializeField] private float _animatorBlendTime;
+    private float _animatorBlendTimer;
+
+    [Header("Sounds")]
+
     [SerializeField] private AudioClip _bipSound;
     [SerializeField, Range(0.0f, 5.0f)] private float _bipSoundVolume = 1f;
     [SerializeField] private AudioClip _tacSound;
     [SerializeField, Range(0.0f, 5.0f)] private float _tacSoundVolume = 1f;
+
+    
     #endregion fields
 
 
@@ -57,6 +67,9 @@ public class InputsDetector : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             float pressingTime = Time.time - _startHoldingTime;
+
+            _animatorBlendTimer = Mathf.Clamp(_animatorBlendTimer+Time.deltaTime, 0.0f, _animatorBlendTime);
+
         }
         if (Input.touchCount > 0)
         {
@@ -74,11 +87,15 @@ public class InputsDetector : MonoBehaviour
                     break;
                 case TouchPhase.Moved:
                     SoundManager.Instance.StopBip();
+                     _animatorBlendTimer = Mathf.Clamp(_animatorBlendTimer+Time.deltaTime, 0.0f, _animatorBlendTime);
+
 
                     float pressingTime = Time.time - _startHoldingTime;
 
                     break;
                 case TouchPhase.Stationary:
+                     _animatorBlendTimer = Mathf.Clamp(_animatorBlendTimer+Time.deltaTime, 0.0f, _animatorBlendTime);
+                     
                      pressingTime = Time.time - _startHoldingTime;
 
                     break;
@@ -132,6 +149,11 @@ public class InputsDetector : MonoBehaviour
             OnMorseChange?.Invoke(_morseCode);
         }
 
+        if(NotAnyInput())
+        {
+            _animatorBlendTimer = Mathf.Clamp(_animatorBlendTimer-Time.deltaTime, 0.0f, _animatorBlendTime);
+        }
+
         if ((Time.time > _endHoldingTime + _validationTime.value)&&(_validation))
         {
             string result = MorseCodeManager.Instance.TranslateFromMorse(_morseCode);
@@ -141,6 +163,18 @@ public class InputsDetector : MonoBehaviour
             _validation = false;
         } 
         
+        var blend = _animatorBlendTimer / _animatorBlendTime;
+        _telegraphAnimator.SetFloat("Blend", blend);
+    }
+
+    private bool NotAnyInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)) return false;
+        if(Input.GetKey(KeyCode.Space)) return false;
+        if(Input.GetKeyUp(KeyCode.Space)) return false;
+        if(Input.touchCount > 0) return false;
+
+        return true;
     }
     #endregion private methods
     #region public methods
