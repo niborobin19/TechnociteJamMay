@@ -34,7 +34,7 @@ public class UserInterface : MonoBehaviour
     public Transform _transitionImage;
     public Text _loadingText;
     public Text _morseCode;
-    public Text _scoreText;
+    public Text[] _scoreTexts;
     #endregion
 
 
@@ -62,6 +62,11 @@ public class UserInterface : MonoBehaviour
     public void RestartGameButton_OnClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGameButton_OnClick()
+    {
+        Application.Quit();
     }
     #endregion
 
@@ -189,7 +194,10 @@ public class UserInterface : MonoBehaviour
 
     private void UpdateScore()
     {
-        _scoreText.text = $"{_score.value}";
+        for (int i = 0; i < _scoreTexts.Length; i++)
+        {
+            _scoreTexts[i].text = $"{_score.value}"; 
+        }
     }
 
     private bool NotAnyInput()
