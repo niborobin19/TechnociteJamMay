@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UserInterface : MonoBehaviour
 {
@@ -15,6 +14,13 @@ public class UserInterface : MonoBehaviour
     #endregion
 
     #region public
+
+    public static UserInterface Instance;
+
+    public GameObject _mainMenuPanel;
+    public GameObject _victoryPanel;
+    public GameObject _defeatPanel;
+
     [Range(0, 1)]
     public float _loadingProgress;
     public FloatVariable _dashTime;
@@ -28,7 +34,43 @@ public class UserInterface : MonoBehaviour
     public Text _morseCode;
     public Text _scoreText;
     #endregion
+
+
+
+    #region Public Methods
+    public void ShowEndGameUI(bool isWon)
+    {
+        if(isWon)
+        {
+            _victoryPanel.SetActive(true);
+        }else
+        {
+            _defeatPanel.SetActive(true);
+        }
+        Time.timeScale = 0;
+    }
+
+    public void StartGameButton_OnClick()
+    {
+        _mainMenuPanel.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void RestartGameButton_OnClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    #endregion
+
+
+
     #region Unity Api
+
+    private void Awake() 
+    {
+        Instance = this;
+        Time.timeScale = 0;
+    }
 
     private void Update()
     {
