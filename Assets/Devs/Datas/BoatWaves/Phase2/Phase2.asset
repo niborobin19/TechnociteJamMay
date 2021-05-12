@@ -15,7 +15,7 @@ MonoBehaviour:
   basicEnemyCount: 12
   normalEnemyCount: 0
   bossEnemyCount: 0
-  spawnTimeRange: {x: 5.5, y: 8.5}
+  spawnTimeRange: {x: 4.5, y: 6.5}
   remainingEnemiesForNextWave: 0
   CanSpawnNorth: 1
   CanSpawnNorthEast: 1

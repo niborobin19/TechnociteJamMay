@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: BossBoat
   m_EditorClassIdentifier: 
   startingHealth: 3
-  moveTurnCount: 3
+  moveTurnCount: 2
   movement: {x: 0, y: 4}
   attackRange: 3
   fireRate: 10
   fireRateRandomness: 0
   fireTransitions: {x: 5, y: 7.5, z: 0.5}
   Coefficient: 3
-  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  baseColor: {r: 0.764151, g: 0, b: 0.6176013, a: 1}
   warningFlickering:
     serializedVersion: 2
     key0: {r: 0, g: 1, b: 0, a: 1}
