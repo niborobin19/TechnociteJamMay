@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
 
     private void StartWave(int wave)
     {
+        if(wave > boatWaves.Length) return;
         Debug.Log("Start wave " + _currentWave);
         _BoatCountArray[0] = boatWaves[wave - 1].basicEnemyCount;
         _BoatCountArray[1] = boatWaves[wave - 1].normalEnemyCount;
